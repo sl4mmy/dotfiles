@@ -1,0 +1,4 @@
+ntpd_flags=		# enabled during install
+sendmail_flags=NO
+smtpd_flags=
+xdm_flags=		# enabled during install

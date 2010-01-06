@@ -1,0 +1,18 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory nomatch
+unsetopt autocd beep extendedglob notify
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/sl4mmy/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+limit -s datasize 2048m
+
+alias ls='ls -CFa'

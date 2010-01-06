@@ -1,0 +1,55 @@
+set spoolfile="imaps://sl4mmy@mail.zerosphere.org"
+set hostname="sl4mmy.zerosphere.org"
+
+set realname="Kent R. Spillner"
+set from="Kent R. Spillner <kspillner@acm.org>"
+alternates "kspillner@acm.org|kent@zerosphere.org|sl4mmy@zerosphere.org"
+
+# IMAP-friendly
+set folder="imaps://sl4mmy@mail.zerosphere.org"
+set mail_check=90
+set timeout=15
+
+set smtp_url="smtps://sl4mmy@mail.zerosphere.org"
+
+set certificate_file=~/.mutt/certs
+
+folder-hook . "set sort=date-received"
+folder-hook {git,openbsd,ruby,struts} "set sort=threads"
+
+hdr_order From Date: From: To: Cc: Subject:
+
+set reverse_name # Copy To: address to From: address when replying
+my_hdr Reply-To: "Kent R. Spillner" <kspillner@acm.org>
+
+subscribe git@vger.kernel.org
+subscribe advocacy@cvs.openbsd.org
+subscribe advocacy@openbsd.org
+subscribe announce@cvs.openbsd.org
+subscribe announce@openbsd.org
+subscribe bugs@cvs.openbsd.org
+subscribe bugs@openbsd.org
+subscribe ipv6@cvs.openbsd.org
+subscribe ipv6@openbsd.org
+subscribe ports@cvs.openbsd.org
+subscribe ports@openbsd.org
+subscribe ports-bugs@cvs.openbsd.org
+subscribe ports-bugs@openbsd.org
+subscribe ports-changes@cvs.openbsd.org
+subscribe ports-security@cvs.openbsd.org
+subscribe ports-security@openbsd.org
+subscribe security-announce@cvs.openbsd.org
+subscribe security-announce@openbsd.org
+subscribe smp@cvs.openbsd.org
+subscribe smp@openbsd.org
+subscribe source-changes@cvs.openbsd.org
+subscribe tech@cvs.openbsd.org
+subscribe tech@openbsd.org
+subscribe x11@cvs.openbsd.org
+subscribe x11@openbsd.org
+subscribe ruby-core@ruby-lang.org
+subscribe commits@struts.apache.org
+subscribe issues@struts.apache.org
+
+mailboxes !
+mailboxes =INBOX.git =INBOX.Junk =INBOX.openbsd =INBOX.ruby =INBOX.Trash
