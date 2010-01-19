@@ -10,8 +10,6 @@ set folder="imaps://sl4mmy@mail.zerosphere.org"
 set mail_check=90
 set timeout=15
 
-set smtp_url="smtps://sl4mmy@mail.zerosphere.org"
-
 set certificate_file=~/.mutt/certs
 
 folder-hook . "set sort=date-received"
