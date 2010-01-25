@@ -12,13 +12,17 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-install: ${HOME}/.vim
+install: ${HOME}/.vimrc ${HOME}/.vim
 
 clean: clean-vim
 
 ${HOME}/.vim:
 	ln -s ${.CURDIR}/ ${HOME}/.vim
 
+${HOME}/.vimrc:
+	ln -s ${.CURDIR}/vimrc ${HOME}/.vimrc
+
 clean-vim:
 	-rm ${HOME}/.vim
+	-rm ${HOME}/.vimrc
 
