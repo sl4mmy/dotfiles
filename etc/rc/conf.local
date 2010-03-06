@@ -1,3 +1,4 @@
+apmd_flags=-C
 ntpd_flags=		# enabled during install
 sendmail_flags=NO
 smtpd_flags=
