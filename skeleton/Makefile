@@ -12,7 +12,7 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-SUBDIRS=	X11 mutt ssh vim zsh
+SUBDIRS=	X11 git hg mutt sh ssh tmux vim zsh
 
 install clean force: ${SUBDIRS}
 install-system destroy-system: # NOP
