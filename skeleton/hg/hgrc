@@ -1,0 +1,6 @@
+[ui]
+username=sl4mmy
+
+[extensions]
+fetch=
+forest=/work/hgforest/forest.py
