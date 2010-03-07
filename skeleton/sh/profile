@@ -1,0 +1,21 @@
+# $OpenBSD: dot.profile,v 1.4 2005/02/16 06:56:57 matthieu Exp $
+#
+# sh/ksh initialization
+
+alias ls='ls -CFa'
+
+JAVA_HOME=/usr/local/jdk-1.6.0
+IDEA_HOME=/usr/local/idea-IU-93.13
+
+JRUBY_HOME=/usr/local/jruby
+
+PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games:.
+
+PATH=${JAVA_HOME}/bin:${IDEA_HOME}/bin:${JRUBY_HOME}/bin:${PATH}
+
+PKG_PATH=ftp://obsd.cec.mtu.edu/pub/OpenBSD/snapshots/packages/`machine -a`/:ftp://ftp3.usa.openbsd.org/pub/OpenBSD/snapshots/packages/`machine -a`/:ftp://ftp.openbsd.org/pub/OpenBSD/snapshots/packages/`machine -a`/
+
+RUBYOPT=rubygems
+
+export PATH HOME TERM
+export JAVA_HOME JRUBY_HOME PKG_PATH RUBYOPT
