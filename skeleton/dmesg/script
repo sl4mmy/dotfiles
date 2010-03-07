@@ -1,0 +1,10 @@
+#!/bin/sh
+
+TODAY=`/bin/date +%Y-%m-%d`
+MACHINE=`/bin/cat ${HOME}/dmesgs/.machine`
+DIVIDER=`echo; echo "$ sysctl hw.sensors"`
+
+/sbin/dmesg > ${HOME}/dmesgs/dmesg-${TODAY}
+/sbin/sysctl hw.sensors > ${HOME}/sensors/sensors-${TODAY}
+
+(cat ${HOME}/dmesgs/dmesg-${TODAY}; echo; echo "$ sysctl hw.sensors"; cat ${HOME}/sensors/sensors-${TODAY}) | mutt -s "${MACHINE} - must disable ACPI to boot when docked" -c kspillner@acm.org dmesg@openbsd.org
