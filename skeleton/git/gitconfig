@@ -1,0 +1,13 @@
+[user]
+	name = Kent R. Spillner
+	email = kspillner@acm.org
+[core]
+	editor = vi
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[github]
+	user = sl4mmy
+	token = f0f86af31aa85cc6ae3a6b0fe223c227
