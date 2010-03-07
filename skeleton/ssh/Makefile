@@ -16,6 +16,8 @@ install: ${HOME}/.ssh/ ${HOME}/.ssh/id_dsa.pub
 
 clean: clean-public-key
 
+force: clean install
+
 ${HOME}/.ssh/:
 	mkdir ${HOME}/.ssh
 	chmod go-rwx ${HOME}/.ssh
@@ -27,4 +29,3 @@ ${HOME}/.ssh/id_dsa.pub:
 
 clean-public-key:
 	-rm ${HOME}/.ssh/id_dsa.pub
-

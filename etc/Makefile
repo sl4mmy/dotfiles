@@ -12,13 +12,11 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-SUBDIR=	rc smtpd
+SUBDIRS=	rc smtpd
 
-install-system: ${SUBDIR}
+install clean force: # NOP
+install-system destroy-system: ${SUBDIRS}
 
-# Recursively make subdirs
-${SUBDIR}::
+${SUBDIRS}::
 	@echo "===> ${.CURDIR}/$@"; \
-	cd ${.CURDIR}/$@; \
-	exec ${MAKE} ${MAKE_FLAGS} ${.TARGETS}
-
+	cd ${.CURDIR}/$@; exec ${MAKE} ${MAKE_FLAGS} ${.TARGETS}

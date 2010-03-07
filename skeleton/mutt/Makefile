@@ -16,6 +16,8 @@ install: ${HOME}/.mutt/ ${HOME}/.mutt/muttrc
 
 clean: clean-muttrc
 
+force: clean install
+
 ${HOME}/.mutt/:
 	mkdir ${HOME}/.mutt
 	chmod go-rwx ${HOME}/.mutt
@@ -26,4 +28,3 @@ ${HOME}/.mutt/muttrc:
 
 clean-muttrc:
 	-rm ${HOME}/.mutt/muttrc
-

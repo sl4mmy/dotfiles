@@ -16,6 +16,8 @@ install: ${HOME}/.Xdefaults ${HOME}/.xsession
 
 clean: clean-xdefaults clean-xsession
 
+force: clean install
+
 ${HOME}/.Xdefaults:
 	ln -s ${.CURDIR}/Xdefaults ${HOME}/.Xdefaults
 
@@ -27,4 +29,3 @@ ${HOME}/.xsession:
 
 clean-xsession:
 	-rm ${HOME}/.xsession
-

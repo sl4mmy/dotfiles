@@ -14,8 +14,16 @@
 
 install-system: /etc/mailer.conf /etc/mail/smtpd.conf
 
+destroy-system: destroy-mailer.conf destroy-smtpd.conf
+
 /etc/mailer.conf:
 	sudo cp mailer.conf /etc/mailer.conf
 
+destroy-mailer.conf:
+	-sudo rm /etc/mailer.conf
+
 /etc/mail/smtpd.conf:
 	sudo cp smtpd.conf /etc/mail/smtpd.conf
+
+destroy-smtpd.conf:
+	-sudo rm /etc/mail/smtpd.conf

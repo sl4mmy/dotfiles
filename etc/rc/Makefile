@@ -14,5 +14,10 @@
 
 install-system: /etc/rc.conf.local
 
+destroy-system: destroy-rc.conf.local
+
 /etc/rc.conf.local:
 	sudo cp conf.local /etc/rc.conf.local
+
+destroy-rc.conf.local:
+	-sudo rm /etc/rc.conf.local

@@ -16,6 +16,8 @@ install: ${HOME}/.zprofile ${HOME}/.zshenv ${HOME}/.zshrc
 
 clean: clean-zprofile clean-zshenv clean-zshrc
 
+force: clean install
+
 ${HOME}/.zprofile:
 	ln -s ${.CURDIR}/zprofile ${HOME}/.zprofile
 
@@ -33,4 +35,3 @@ ${HOME}/.zshrc:
 
 clean-zshrc:
 	-rm ${HOME}/.zshrc
-

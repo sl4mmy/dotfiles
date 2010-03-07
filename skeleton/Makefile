@@ -12,15 +12,11 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-SUBDIR=	X11 mutt ssh vim zsh
+SUBDIRS=	X11 mutt ssh vim zsh
 
-install: ${SUBDIR}
+install clean force: ${SUBDIRS}
+install-system destroy-system: # NOP
 
-clean: ${SUBDIR}
-
-# Recursively make subdirs
-${SUBDIR}::
+${SUBDIRS}::
 	@echo "===> ${.CURDIR}/$@"; \
-	cd ${.CURDIR}/$@; \
-	exec ${MAKE} ${MAKE_FLAGS} ${.TARGETS}
-
+	cd ${.CURDIR}/$@; exec ${MAKE} ${MAKE_FLAGS} ${.TARGETS}

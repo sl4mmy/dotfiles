@@ -12,17 +12,10 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-SUBDIR=	etc skeleton
+SUBDIRS=	etc skeleton
 
-install: skeleton
+install install-system clean destroy-system force: ${SUBDIRS}
 
-install-system: etc
-
-clean: skeleton
-
-# Recursively make subdirs
-${SUBDIR}::
+${SUBDIRS}::
 	@echo "===> ${.CURDIR}/$@"; \
-	cd ${.CURDIR}/$@; \
-	exec ${MAKE} ${MAKE_FLAGS} ${.TARGETS}
-
+	cd ${.CURDIR}/$@; exec ${MAKE} ${MAKE_FLAGS} ${.TARGETS}

@@ -14,15 +14,18 @@
 
 install: ${HOME}/.vimrc ${HOME}/.vim
 
-clean: clean-vim
+clean: clean-vim clean-vimrc
+
+force: clean install
 
 ${HOME}/.vim:
 	ln -s ${.CURDIR}/ ${HOME}/.vim
 
+clean-vim:
+	-rm ${HOME}/.vim
+
 ${HOME}/.vimrc:
 	ln -s ${.CURDIR}/vimrc ${HOME}/.vimrc
 
-clean-vim:
-	-rm ${HOME}/.vim
+clean-vimrc:
 	-rm ${HOME}/.vimrc
-
