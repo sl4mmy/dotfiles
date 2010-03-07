@@ -12,9 +12,9 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-install: ${HOME}/build_kernel ${HOME}/build_userland ${HOME}/build_xenocara
+install: ${HOME}/build_kernel ${HOME}/build_userland ${HOME}/build_xenocara ${HOME}/kernel/
 
-clean: clean-kernel clean-userland clean-xenocara
+clean: clean-kernel clean-userland clean-xenocara clean-kernel-dir
 
 force: clean install
 
@@ -35,3 +35,9 @@ ${HOME}/build_xenocara:
 
 clean-xenocara:
 	-rm ${HOME}/build_xenocara
+
+${HOME}/kernel/:
+	mkdir ${HOME}/kernel
+
+clean-kernel-dir:
+	-rm -rf ${HOME}/kernel
