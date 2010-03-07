@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd /usr/src && sudo rm -rf /usr/obj/* && sudo make obj
+
+cd /usr/src/etc && env DESTDIR=/ sudo make distrib-dirs
+cd /usr/src && sudo time make build

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd /usr/xenocara && cvs -q -danoncvs@anoncvs.openbsd.org:/cvs up -PAd
+
+sudo rm -rf /usr/xobj/* && sudo make bootstrap && sudo make obj
+sudo time make build

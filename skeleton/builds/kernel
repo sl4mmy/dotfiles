@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cd /usr/src && cvs -q -danoncvs@anoncvs.openbsd.org:/cvs up -PAd
+
+rm -rf /home/sl4mmy/kernel/*
+cp /usr/src/sys/arch/amd64/conf/GENERIC.MP /home/sl4mmy/kernel/
+cd /home/sl4mmy/kernel && /usr/sbin/config -s /usr/src/sys -b . GENERIC.MP
+
+make clean && make depend && time make
+sudo make install
