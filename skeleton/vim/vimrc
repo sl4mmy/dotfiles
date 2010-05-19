@@ -1,2 +1,6 @@
 set nocompatible
+
 set number
+
+set incsearch
+set hlsearch
