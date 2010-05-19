@@ -2,7 +2,7 @@
 	name = Kent R. Spillner
 	email = kspillner@acm.org
 [core]
-	editor = vi
+	editor = vim
 [color]
 	branch = auto
 	diff = auto
