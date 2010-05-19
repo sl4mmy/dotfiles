@@ -21,3 +21,5 @@ destroy-system: destroy-rc.conf.local
 
 destroy-rc.conf.local:
 	-sudo rm /etc/rc.conf.local
+
+.PHONY: install-system destroy-system destroy-rc.conf.local

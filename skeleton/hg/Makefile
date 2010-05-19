@@ -19,7 +19,9 @@ clean: clean-hgrc
 force: clean install
 
 ${HOME}/.hgrc:
-	ln -s ${.CURDIR}/hgrc ${HOME}/.hgrc
+	ln -s ${CURDIR}/hgrc ${HOME}/.hgrc
 
 clean-hgrc:
 	-rm ${HOME}/.hgrc
+
+.PHONY: install clean force clean-hgrc

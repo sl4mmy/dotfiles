@@ -23,8 +23,10 @@ ${HOME}/.mutt/:
 	chmod go-rwx ${HOME}/.mutt
 
 ${HOME}/.mutt/muttrc:
-	ln -s ${.CURDIR}/muttrc ${HOME}/.mutt/muttrc
+	ln -s ${CURDIR}/muttrc ${HOME}/.mutt/muttrc
 	chmod go-rwx ${HOME}/.mutt/muttrc
 
 clean-muttrc:
 	-rm ${HOME}/.mutt/muttrc
+
+.PHONY: install clean force clean-muttrc

@@ -17,6 +17,10 @@ SUBDIRS=	X11 builds dmesg git hg mutt sh ssh tmux vim zsh
 install clean force: ${SUBDIRS}
 install-system destroy-system: # NOP
 
-${SUBDIRS}::
-	@echo "===> ${.CURDIR}/$@"; \
-	cd ${.CURDIR}/$@; exec ${MAKE} ${MAKE_FLAGS} ${.TARGETS}
+${SUBDIRS}:
+	@echo "===> ${CURDIR}/$@"
+	${MAKE} -C $@ ${MAKECMDGOALS}
+
+.PHONY: install install-system clean destroy-system force ${SUBDIRS}
+
+.EXPORT_ALL_VARIABLES:

@@ -19,13 +19,15 @@ clean: clean-xdefaults clean-xsession
 force: clean install
 
 ${HOME}/.Xdefaults:
-	ln -s ${.CURDIR}/Xdefaults ${HOME}/.Xdefaults
+	ln -s ${CURDIR}/Xdefaults ${HOME}/.Xdefaults
 
 clean-xdefaults:
 	-rm ${HOME}/.Xdefaults
 
 ${HOME}/.xsession:
-	ln -s ${.CURDIR}/xsession ${HOME}/.xsession
+	ln -s ${CURDIR}/xsession ${HOME}/.xsession
 
 clean-xsession:
 	-rm ${HOME}/.xsession
+
+.PHONY: install clean force clean-xdefaults clean-xsession

@@ -19,19 +19,21 @@ clean: clean-zprofile clean-zshenv clean-zshrc
 force: clean install
 
 ${HOME}/.zprofile:
-	ln -s ${.CURDIR}/zprofile ${HOME}/.zprofile
+	ln -s ${CURDIR}/zprofile ${HOME}/.zprofile
 
 clean-zprofile:
 	-rm ${HOME}/.zprofile
 
 ${HOME}/.zshenv:
-	ln -s ${.CURDIR}/zshenv ${HOME}/.zshenv
+	ln -s ${CURDIR}/zshenv ${HOME}/.zshenv
 
 clean-zshenv:
 	-rm ${HOME}/.zshenv
 
 ${HOME}/.zshrc:
-	ln -s ${.CURDIR}/zshrc ${HOME}/.zshrc
+	ln -s ${CURDIR}/zshrc ${HOME}/.zshrc
 
 clean-zshrc:
 	-rm ${HOME}/.zshrc
+
+.PHONY: install clean force clean-zprofile clean-zshenv clean-zshrc

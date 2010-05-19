@@ -19,7 +19,9 @@ clean: clean-gitconfig
 force: clean install
 
 ${HOME}/.gitconfig:
-	ln -s ${.CURDIR}/gitconfig ${HOME}/.gitconfig
+	ln -s ${CURDIR}/gitconfig ${HOME}/.gitconfig
 
 clean-gitconfig:
 	-rm ${HOME}/.gitconfig
+
+.PHONY: install clean force clean-gitconfig

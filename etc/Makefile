@@ -17,6 +17,10 @@ SUBDIRS=	rc smtpd
 install clean force: # NOP
 install-system destroy-system: ${SUBDIRS}
 
-${SUBDIRS}::
-	@echo "===> ${.CURDIR}/$@"; \
-	cd ${.CURDIR}/$@; exec ${MAKE} ${MAKE_FLAGS} ${.TARGETS}
+${SUBDIRS}:
+	@echo "===> ${CURDIR}/$@"
+	${MAKE} -C $@ ${MAKECMDGOALS}
+
+.PHONY: install install-system clean destroy-system force ${SUBDIRS}
+
+.EXPORT_ALL_VARIABLES:

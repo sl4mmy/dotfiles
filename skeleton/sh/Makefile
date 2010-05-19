@@ -19,7 +19,9 @@ clean: clean-profile
 force: clean install
 
 ${HOME}/.profile:
-	ln -s ${.CURDIR}/profile ${HOME}/.profile
+	ln -s ${CURDIR}/profile ${HOME}/.profile
 
 clean-profile:
 	-rm ${HOME}/.profile
+
+.PHONY: install clean force clean-profile

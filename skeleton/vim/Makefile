@@ -19,13 +19,15 @@ clean: clean-vim clean-vimrc
 force: clean install
 
 ${HOME}/.vim:
-	ln -s ${.CURDIR}/ ${HOME}/.vim
+	ln -s ${CURDIR}/ ${HOME}/.vim
 
 clean-vim:
 	-rm ${HOME}/.vim
 
 ${HOME}/.vimrc:
-	ln -s ${.CURDIR}/vimrc ${HOME}/.vimrc
+	ln -s ${CURDIR}/vimrc ${HOME}/.vimrc
 
 clean-vimrc:
 	-rm ${HOME}/.vimrc
+
+.PHONY: install clean force clean-vim clean-vimrc

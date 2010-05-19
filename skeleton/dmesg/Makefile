@@ -19,7 +19,7 @@ clean: clean-dmesg clean-machine clean-dmesgs clean-sensors
 force: clean install
 
 ${HOME}/dmesg:
-	ln -s ${.CURDIR}/script ${HOME}/dmesg
+	ln -s ${CURDIR}/script ${HOME}/dmesg
 
 clean-dmesg:
 	-rm ${HOME}/dmesg
@@ -31,7 +31,7 @@ clean-dmesgs:
 	-rm -rf ${HOME}/dmesgs
 
 ${HOME}/dmesgs/.machine: ${HOME}/dmesgs/
-	ln -s ${.CURDIR}/machine ${HOME}/dmesgs/.machine
+	ln -s ${CURDIR}/machine ${HOME}/dmesgs/.machine
 
 clean-machine:
 	-rm ${HOME}/dmesgs/.machine
@@ -41,3 +41,5 @@ ${HOME}/sensors/:
 
 clean-sensors:
 	-rm -rf ${HOME}/sensors
+
+.PHONY: install clean force clean-dmesgs clean-dmesg clean-machine clean-sensors

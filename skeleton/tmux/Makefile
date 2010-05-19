@@ -19,7 +19,9 @@ clean: clean-tmux.conf
 force: clean install
 
 ${HOME}/.tmux.conf:
-	ln -s ${.CURDIR}/tmux.conf ${HOME}/.tmux.conf
+	ln -s ${CURDIR}/tmux.conf ${HOME}/.tmux.conf
 
 clean-tmux.conf:
 	-rm ${HOME}/.tmux.conf
+
+.PHONY: install clean force clean-tmux.conf

@@ -19,19 +19,19 @@ clean: clean-kernel clean-userland clean-xenocara clean-kernel-dir
 force: clean install
 
 ${HOME}/build_kernel:
-	ln -s ${.CURDIR}/kernel ${HOME}/build_kernel
+	ln -s ${CURDIR}/kernel ${HOME}/build_kernel
 
 clean-kernel:
 	-rm ${HOME}/build_kernel
 
 ${HOME}/build_userland:
-	ln -s ${.CURDIR}/userland ${HOME}/build_userland
+	ln -s ${CURDIR}/userland ${HOME}/build_userland
 
 clean-userland:
 	-rm ${HOME}/build_userland
 
 ${HOME}/build_xenocara:
-	ln -s ${.CURDIR}/xenocara ${HOME}/build_xenocara
+	ln -s ${CURDIR}/xenocara ${HOME}/build_xenocara
 
 clean-xenocara:
 	-rm ${HOME}/build_xenocara
@@ -41,3 +41,5 @@ ${HOME}/kernel/:
 
 clean-kernel-dir:
 	-rm -rf ${HOME}/kernel
+
+.PHONY: install clean force clean-kernel-dir clean-kernel clean-userland clean-xenocara

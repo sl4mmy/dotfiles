@@ -29,3 +29,5 @@ ${HOME}/.ssh/id_dsa.pub:
 
 clean-public-key:
 	-rm ${HOME}/.ssh/id_dsa.pub
+
+.PHONY: install clean force clean-public-key

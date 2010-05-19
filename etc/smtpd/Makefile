@@ -27,3 +27,5 @@ destroy-mailer.conf:
 
 destroy-smtpd.conf:
 	-sudo rm /etc/mail/smtpd.conf
+
+.PHONY: install-system destroy-system destroy-mailer.conf destroy-smtpd.conf
