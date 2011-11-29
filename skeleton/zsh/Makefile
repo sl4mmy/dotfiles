@@ -1,4 +1,4 @@
-# Copyright (c) 2010, Kent R. Spillner <kspillner@acm.org>
+# Copyright (c) 2010, 2011, Kent R. Spillner <kspillner@acm.org>
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -12,28 +12,58 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-install: ${HOME}/.zprofile ${HOME}/.zshenv ${HOME}/.zshrc
+install: ${HOME}/.zlogin ${HOME}/.zlogin.zwc ${HOME}/.zlogout ${HOME}/.zlogout.zwc ${HOME}/.zprofile ${HOME}/.zprofile.zwc ${HOME}/.zshenv ${HOME}/.zshenv.zwc ${HOME}/.zshrc ${HOME}/.zshrc.zwc
 
-clean: clean-zprofile clean-zshenv clean-zshrc
+clean: clean-zlogin clean-zlogout clean-zprofile clean-zshenv clean-zshrc
 
 force: clean install
 
-${HOME}/.zprofile:
-	ln -s ${CURDIR}/zprofile ${HOME}/.zprofile
+${HOME}/.%:
+	ln -fs ${CURDIR}/$(patsubst ${HOME}/.%,%,$@) $@
+
+${HOME}/.zlogin.zwc: zlogin.zwc
+
+zlogin.zwc: zlogin
+	zsh -c "zcompile $<"
+
+clean-zlogin:
+	-rm ${HOME}/.zlogin ${HOME}/.zlogin.zwc
+	-rm -f zlogin.zwc
+
+${HOME}/.zlogout.zwc: zlogout.zwc
+
+zlogout.zwc: zlogout
+	zsh -c "zcompile $<"
+
+clean-zlogout:
+	-rm ${HOME}/.zlogout ${HOME}/.zlogout.zwc
+	-rm -f zlogout.zwc
+
+${HOME}/.zprofile.zwc: zprofile.zwc
+
+zprofile.zwc: zprofile
+	zsh -c "zcompile $<"
 
 clean-zprofile:
-	-rm ${HOME}/.zprofile
+	-rm ${HOME}/.zprofile ${HOME}/.zprofile.zwc
+	-rm -f zprofile.zwc
 
-${HOME}/.zshenv:
-	ln -s ${CURDIR}/zshenv ${HOME}/.zshenv
+${HOME}/.zshenv.zwc: zshenv.zwc
+
+zshenv.zwc: zshenv
+	zsh -c "zcompile $<"
 
 clean-zshenv:
-	-rm ${HOME}/.zshenv
+	-rm ${HOME}/.zshenv ${HOME}/.zshenv.zwc
+	-rm -f zshenv.zwc
 
-${HOME}/.zshrc:
-	ln -s ${CURDIR}/zshrc ${HOME}/.zshrc
+${HOME}/.zshrc.zwc: zshrc.zwc
+
+zshrc.zwc: zshrc
+	zsh -c "zcompile $<"
 
 clean-zshrc:
-	-rm ${HOME}/.zshrc
+	-rm ${HOME}/.zshrc ${HOME}/.zshrc.zwc
+	-rm -f zshrc.zwc
 
-.PHONY: install clean force clean-zprofile clean-zshenv clean-zshrc
+.PHONY: install clean force clean-zlogin clean-zlogout clean-zprofile clean-zshenv clean-zshrc
