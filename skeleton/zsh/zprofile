@@ -1,8 +1,1 @@
-export JAVA_HOME=/usr/local/jdk-1.6.0
-export IDEA_HOME=/usr/local/idea-IU-93.13
-
-export JRUBY_HOME=/usr/local/jruby
-
-export RUBYOPT=rubygems
-
-export PATH=${JAVA_HOME}/bin:${IDEA_HOME}/bin:${JRUBY_HOME}/bin:${PATH}
+# Sourced by login shells (before zshrc)

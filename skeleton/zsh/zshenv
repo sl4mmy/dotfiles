@@ -1,2 +1,15 @@
-PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games:.
-export PATH HOME TERM
+# Sourced by all shells
+
+ANT_HOME=/usr/local/ant
+IDEA_HOME=/usr/local/idea
+JAVA_HOME=/usr/local/jdk-1.6.0
+JRUBY_HOME=/usr/local/jruby
+
+PATH=${HOME}/bin:${ANT_HOME}/bin:${IDEA_HOME}/bin:${JAVA_HOME}/bin:${JRUBY_HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/games:/bin:/sbin
+
+RUBYOPT=rubygems
+
+ZDOTDIR=${HOME}
+
+export HOME PATH TERM
+export ANT_HOME IDEA_HOME JAVA_HOME JRUBY_HOME RUBYOPT ZDOTDIR
