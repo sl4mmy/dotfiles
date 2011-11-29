@@ -1,18 +1,81 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt appendhistory nomatch
-unsetopt autocd beep extendedglob notify
+# Sourced by interactive shells
+
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
+
+LANG=en_US.ISO8859-1
+LC_CTYPE="en_US.ISO8859-1"
+setopt MULTIBYTE
+
+HISTFILE=~/.zsh_history
+HISTSIZE=2500
+SAVEHIST=2000
+setopt APPEND_HISTORY EXTENDED_HISTORY HIST_ALLOW_CLOBBER NO_HIST_BEEP \
+	NO_HIST_EXPIRE_DUPS_FIRST HIST_FCNTL_LOCK HIST_FIND_NO_DUPS \
+	HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_LEX_WORDS \
+	NO_HIST_NO_FUNCTIONS HIST_NO_STORE HIST_REDUCE_BLANKS \
+	NO_HIST_SAVE_BY_COPY HIST_SAVE_NO_DUPS HIST_VERIFY INC_APPEND_HISTORY \
+	NO_SHARE_HISTORY
+
+function battery_life_display() {
+	if [[ ! -x /usr/sbin/apm ]]; then
+		echo -n "%D{%Y-%m-%d} %T"
+		return
+	fi
+
+	local ac_status=`/usr/sbin/apm -a`
+	local battery_life=`/usr/sbin/apm -l`
+
+	if [[ $ac_status -eq 1 && $battery_life -ge 96 ]]; then
+		echo -n "%{%F{green}%}\u00A7"
+		return
+	fi
+
+	local fill_char="%{\u00BB%G%}"
+	local fill_color='%F{blue}'
+
+	if [[ $ac_status -eq 1 ]]; then
+		fill_char="%{\u00AB%G%}"
+	fi
+
+	if [[ $battery_life -le 35 ]]; then
+		fill_color='%F{red}'
+	elif [[ $battery_life -le 65 ]]; then
+		fill_color='%F{yellow}'
+	fi
+
+	local ndead_bars=$(( (100 - $battery_life) / 10 ))
+	local dead_bars="%{%F{gray}%}\${(mpl.$ndead_bars..${(%)fill_char}.)}"
+
+	local current_bar="%{$fill_color%}${(%)fill_char}"
+	if [[ $(( $battery_life % 10 )) -eq 0 ]]; then
+		current_bar=""
+	elif [[ $(( $battery_life % 10 )) -le 6 ]]; then
+		current_bar="%{%F{yellow}%}${(%)fill_char}"
+	fi
+
+	local nfull_bars=$(( $battery_life / 10 ))
+	local full_bars="%{$fill_color%}\${(mpl.$nfull_bars..${(%)fill_char}.)}"
+
+	echo -e "${(e)dead_bars}$current_bar${(e)full_bars}\c"
+}
+
+PS1=$'%{%F{blue}%}%n@%m:%~\n%h (%?%)%# %{$terminfo[sgr0]%}'
+RPROMPT='$(battery_life_display)%{$terminfo[sgr0]%}'
+setopt PROMPT_PERCENT PROMPT_SUBST
+
+setopt nomatch
+unsetopt autocd beep extendedglob notify
+
 zstyle :compinstall filename '/home/sl4mmy/.zshrc'
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
+
+arch=`machine -a`
+PKG_PATH=ftp://obsd.cec.mtu.edu/pub/OpenBSD/snapshots/packages/${arch}/:ftp://ftp3.usa.openbsd.org/pub/OpenBSD/snapshots/packages/${arch}/:ftp://ftp.openbsd.org/pub/OpenBSD/snapshots/packages/${arch}/
 
 limit -s datasize 2048m
 
 alias ls='ls -CFa'
+
+export LANG LC_CTYPE PKG_PATH PS1 RPROMPT
